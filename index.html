@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roles Board — Past / Present / Future / TBD</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Roles Board</h1>
+    <div class="actions">
+      <form id="add-form" autocomplete="off" aria-label="Add a new role">
+        <input id="role-input" type="text" placeholder="Add a new role…" aria-label="Role name" />
+        <select id="category-select" aria-label="Category">
+          <option value="Present">Present</option>
+          <option value="Past">Past</option>
+          <option value="Future">Future</option>
+          <option value="TBD">TBD</option>
+        </select>
+        <button type="submit" class="btn primary">Add</button>
+      </form>
+      <div class="io">
+        <button id="export-btn" class="btn">Export JSON</button>
+        <label for="import-file" class="btn">Import JSON</label>
+        <input id="import-file" type="file" accept="application/json" hidden />
+      </div>
+    </div>
+  </header>
+
+  <main class="board" aria-label="Roles board">
+    <section class="column" data-category="Past" aria-label="Past" aria-dropeffect="move">
+      <div class="column-header">
+        <h2>Past</h2>
+      </div>
+      <div class="column-body droptarget" id="col-Past"></div>
+    </section>
+
+    <section class="column" data-category="Present" aria-label="Present" aria-dropeffect="move">
+      <div class="column-header">
+        <h2>Present</h2>
+      </div>
+      <div class="column-body droptarget" id="col-Present"></div>
+    </section>
+
+    <section class="column" data-category="Future" aria-label="Future" aria-dropeffect="move">
+      <div class="column-header">
+        <h2>Future</h2>
+      </div>
+      <div class="column-body droptarget" id="col-Future"></div>
+    </section>
+
+    <section class="column" data-category="TBD" aria-label="To Be Determined" aria-dropeffect="move">
+      <div class="column-header">
+        <h2>TBD</h2>
+      </div>
+      <div class="column-body droptarget" id="col-TBD"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>
+      Drag cards between columns or use the category dropdown on each card.
+      Check the box to mark a role. Data is saved automatically in your browser (localStorage).
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
